@@ -1,6 +1,10 @@
-
 import Navbar from "./components/Navbar";
 import About from "./components/About";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Experience from "./components/Experience";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import "./App.css";
 
 const technologies = [
@@ -45,12 +49,9 @@ function Home() {
           </h1>
 
           <p className="hero-description">
-            I enjoy taking ideas from the first spark of
-            inspiration to something real and useful.
-            Whether I'm building a web application,
-            solving a challenging problem, or learning
-            something new, I love discovering what
-            technology makes possible.
+            I enjoy taking ideas from the first spark of inspiration to something real and useful.
+            Whether I'm building a full-stack web application, solving a challenging problem,
+            or exploring Web3 &amp; IoT, I love discovering what technology makes possible.
           </p>
 
           <div className="hero-actions">
@@ -90,6 +91,14 @@ function Home() {
             >
               <LinkedinIcon />
               LinkedIn
+            </a>
+
+            <a
+              href="mailto:sheetalr2605@gmail.com"
+              aria-label="Send direct email"
+            >
+              <span style={{ fontSize: "17px" }}>✉</span>
+              sheetalr2605@gmail.com
             </a>
           </div>
         </div>
@@ -174,7 +183,13 @@ function App() {
       <main>
         <Home />
         <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Contact />
       </main>
+
+      <Footer />
     </>
   );
 }

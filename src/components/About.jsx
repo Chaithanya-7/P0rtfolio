@@ -1,4 +1,3 @@
-
 function About() {
   return (
     <section id="about" className="about-section">
@@ -10,8 +9,8 @@ function About() {
             The person behind <span>the code.</span>
           </h2>
           <p className="about-subtitle">
-            Curious by nature. Creative at heart.
-            Always learning something new.
+            Curious by nature. Analytical at heart.
+            Always driven to explore what technology makes possible.
           </p>
         </div>
 
@@ -21,31 +20,34 @@ function About() {
             <h3>My Story <span>✳</span></h3>
 
             <p>
-              What I enjoy most about technology is the
-              opportunity to take an idea and gradually
-              turn it into something real.
+              I am a Computer Science engineering undergraduate at <strong>REVA University, Bengaluru</strong> (specializing in IoT, Cybersecurity &amp; Blockchain, currently maintaining a <strong>9.0 CGPA</strong>). What excites me most about technology is taking an abstract concept and engineering it into a robust, tangible, and useful application.
             </p>
 
             <p>
-              I like exploring how applications work,
-              understanding the logic behind them, and
-              finding better ways to solve problems.
-              Every project teaches me something new,
-              whether it's a technical concept or a
-              different way of approaching a challenge.
+              My journey spans full-stack web development with <strong>React</strong> and <strong>Spring Boot</strong>, secure backend architecture with <strong>PostgreSQL</strong>, and cutting-edge decentralized systems. From building coding analytics platforms with real-time heatmaps to winning <strong>1st place at the Silver Spectrum Hackathon</strong> for anti-MEV blockchain protections, I thrive on solving complex engineering challenges.
             </p>
 
             <p>
-              I'm still learning, experimenting, and
-              growing as a developer. This portfolio is
-              a space where I share that journey and
-              the things I create along the way.
+              Whether designing clean responsive user interfaces, writing secure RESTful APIs, or experimenting with microcontroller OTA updates, I value clean code, strong fundamentals, and continuous learning.
             </p>
 
-            <a href="#projects" className="about-link">
-              Discover what I've built
-              <span aria-hidden="true">↗</span>
-            </a>
+            <div className="about-badges">
+              <span className="about-stat-pill">📍 Bengaluru, India</span>
+              <span className="about-stat-pill">🎓 REVA University (CGPA 9.0)</span>
+              <span className="about-stat-pill">🏆 Hackathon 1st Place</span>
+              <span className="about-stat-pill">💡 Full-Stack &amp; Web3</span>
+            </div>
+
+            <div className="about-actions-row">
+              <a href="#projects" className="about-link">
+                Discover what I've built
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a href="#skills" className="about-link secondary-link">
+                View my tech stack
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
           </div>
 
           <div className="about-highlights">
@@ -53,10 +55,9 @@ function About() {
             <div className="about-highlight-card">
               <div className="highlight-icon">01</div>
               <div>
-                <h4>Building Things</h4>
+                <h4>Full-Stack Engineering</h4>
                 <p>
-                  I enjoy bringing ideas to life through
-                  functional, thoughtful applications.
+                  Architecting end-to-end web applications with modern React frontends, robust Spring Boot backends, and relational databases.
                 </p>
               </div>
             </div>
@@ -64,11 +65,9 @@ function About() {
             <div className="about-highlight-card">
               <div className="highlight-icon">02</div>
               <div>
-                <h4>Solving Problems</h4>
+                <h4>Security &amp; Web3 Innovation</h4>
                 <p>
-                  I like breaking down challenges,
-                  exploring solutions, and understanding
-                  the reasoning behind them.
+                  Building secure smart contract systems, tamper-proof OTA firmware updates, and defending against front-running and MEV exploits.
                 </p>
               </div>
             </div>
@@ -76,11 +75,9 @@ function About() {
             <div className="about-highlight-card">
               <div className="highlight-icon">03</div>
               <div>
-                <h4>Always Exploring</h4>
+                <h4>Problem Solving &amp; Core CS</h4>
                 <p>
-                  I'm curious about new technologies
-                  and enjoy learning beyond what
-                  I already know.
+                  Grounded in solid computer science foundations: Data Structures, Algorithms, OOP, DBMS, and Operating Systems.
                 </p>
               </div>
             </div>

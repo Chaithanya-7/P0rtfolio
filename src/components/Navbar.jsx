@@ -1,10 +1,11 @@
-
 import { useEffect, useState } from "react";
 
 const links = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -15,18 +16,18 @@ function Navbar() {
 
   useEffect(() => {
     const updateNavbar = () => {
-      setScrolled(window.scrollY > 10);
+      setScrolled(window.scrollY > 15);
 
       const sections = links
-        .map((link) =>
-          document.getElementById(link.href.slice(1))
-        )
+        .map((link) => document.getElementById(link.href.slice(1)))
         .filter(Boolean);
 
       let current = sections[0]?.id || "home";
 
       for (const section of sections) {
-        if (section.getBoundingClientRect().top <= 150) {
+        const rect = section.getBoundingClientRect();
+        // If top of section is within upper viewport area
+        if (rect.top <= 200 && rect.bottom >= 100) {
           current = section.id;
         }
       }
@@ -36,9 +37,7 @@ function Navbar() {
 
     updateNavbar();
 
-    window.addEventListener("scroll", updateNavbar, {
-      passive: true,
-    });
+    window.addEventListener("scroll", updateNavbar, { passive: true });
     window.addEventListener("resize", updateNavbar);
 
     return () => {
@@ -57,9 +56,7 @@ function Navbar() {
     };
 
     window.addEventListener("keydown", closeOnEscape);
-
-    return () =>
-      window.removeEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
   }, [menuOpen]);
 
   const handleLinkClick = (id) => {
@@ -69,49 +66,71 @@ function Navbar() {
 
   return (
     <header className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
-      <a
-        href="#home"
-        className="logo"
-        onClick={() => handleLinkClick("home")}
-        aria-label="Sheetal R. - Home"
-      >
-        Sheetal <span>R.</span>
-      </a>
+      <div className="navbar-container">
+        <a
+          href="#home"
+          className="logo"
+          onClick={() => handleLinkClick("home")}
+          aria-label="Sheetal R. - Home"
+        >
+          Sheetal <span>R.</span>
+        </a>
 
-      <button
-        type="button"
-        className="menu-toggle"
-        aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-        aria-expanded={menuOpen}
-        aria-controls="primary-navigation"
-        onClick={() => setMenuOpen((previous) => !previous)}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+        {/* Mobile Hamburger Button */}
+        <button
+          type="button"
+          className={`menu-toggle ${menuOpen ? "open" : ""}`}
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
 
-      <nav
-        id="primary-navigation"
-        className={`nav-links ${menuOpen ? "nav-open" : ""}`}
-        aria-label="Main navigation"
-      >
-        {links.map((link) => {
-          const id = link.href.slice(1);
+        {/* Backdrop for mobile */}
+        {menuOpen && (
+          <div
+            className="nav-backdrop"
+            onClick={() => setMenuOpen(false)}
+            aria-hidden="true"
+          />
+        )}
 
-          return (
-            <a
-              key={id}
-              href={link.href}
-              className={active === id ? "nav-active" : ""}
-              aria-current={active === id ? "location" : undefined}
-              onClick={() => handleLinkClick(id)}
-            >
-              {link.label}
-            </a>
-          );
-        })}
-      </nav>
+        <nav
+          id="primary-navigation"
+          className={`nav-links ${menuOpen ? "nav-open" : ""}`}
+          aria-label="Main navigation"
+        >
+          {links.map((link) => {
+            const id = link.href.slice(1);
+            const isActive = active === id;
+
+            return (
+              <a
+                key={id}
+                href={link.href}
+                className={isActive ? "nav-active" : ""}
+                aria-current={isActive ? "location" : undefined}
+                onClick={() => handleLinkClick(id)}
+              >
+                {link.label}
+              </a>
+            );
+          })}
+
+          <a
+            href="/resume.pdf"
+            className="nav-cta-btn"
+            download
+            onClick={() => setMenuOpen(false)}
+          >
+            Resume <span>↓</span>
+          </a>
+        </nav>
+      </div>
     </header>
   );
 }
